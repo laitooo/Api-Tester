@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:id="@+id/param_key"
+        android:hint="Key"
+        android:padding="5dp"
+        android:layout_marginRight="10dp"
+        android:background="#aaa"
+        />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="2"
+        android:id="@+id/param_value"
+        android:hint="Value"
+        android:padding="5dp"
+        android:layout_marginRight="10dp"
+        android:background="#aaa"
+        />
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="0.4"
+        android:id="@+id/add"
+        android:background="#0000"
+        android:src="@android:drawable/ic_input_add"
+        android:tint="#000"/>
+
+
+
+</LinearLayout>

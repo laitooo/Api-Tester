@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Api Tester</string>
+    <string name="result_activity">Result Activity</string>
+    <string name="network_error">Network Connection Error</string>
+    <string name="not_html">Response isn\'t an html file</string>
+    <string name="not_json">Result cant be converted to json object</string>
+</resources>
