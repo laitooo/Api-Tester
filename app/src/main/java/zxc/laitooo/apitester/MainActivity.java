@@ -13,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     int style = 0;
     boolean error = false;
+    String error_log = "no log";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
                 link = s.toString();
             }
         });
+
+        //http://laitooosan.000webhostapp.com/test.php
 
 
         send.setOnClickListener(new View.OnClickListener() {
@@ -219,6 +223,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onResponse(String s) {
                             resu += s;
                             error = false;
+                            Log.e("NO ERROR","message : " + s);
                         }
                     },
                     new Response.ErrorListener() {
@@ -226,7 +231,21 @@ public class MainActivity extends AppCompatActivity {
                         public void onErrorResponse(VolleyError volleyError) {
                             resu += volleyError.getMessage();
                             error = true;
-                            //Log.e("ERRORRORORO",volleyError.networkResponse.toString());
+                            try {
+                                error_log = String.valueOf(volleyError.networkResponse.statusCode);
+                                Log.e("ERM","f" + volleyError.networkResponse.statusCode);
+                            }catch (NullPointerException e){
+                                error_log = "no log";
+                            }
+
+                            try {
+                                if (volleyError.getMessage().contains("javax.net.ssl.SSLHandshakeException:"))
+                                    error_log = "SSL Handshake Exception   \nSSL Protocol Exception \n\n" +
+                                            "tip: try to use \"http://\" instead of \"https://\"";
+                            }catch (NullPointerException e){
+
+                            }
+                            Log.e("ERRORRORORO","Eee" + volleyError.getMessage());
                         }
                     }){
                 @Override
@@ -263,6 +282,7 @@ public class MainActivity extends AppCompatActivity {
             i.putExtra("style",style);
             i.putExtra("resu",resu);
             i.putExtra("error",error);
+            i.putExtra("error_log",error_log);
             startActivity(i);
         }
     };
