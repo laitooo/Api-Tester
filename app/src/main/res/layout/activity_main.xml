@@ -30,6 +30,7 @@
                 android:layout_height="40dp"
                 android:id="@+id/url"
                 android:lines="1"
+                android:maxLines="1"
                 android:layout_marginTop="8dp"
                 android:padding="5dp"
                 android:background="#aaa"
